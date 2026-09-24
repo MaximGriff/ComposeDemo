@@ -27,7 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composedemo.ui.theme.ComposeDemoTheme
-
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeDemoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+                        DemoScreen(modifier = Modifier.padding(innerPadding))
 //                    Greeting(
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
@@ -55,12 +58,14 @@ fun DemoText(message: String, fontSize: Float){
     )
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun DemoTextPreview(){
     ComposeDemoTheme {
-        DemoText(message = "Welcome to Android", fontSize = 12f)
-
+        //DemoText(message = "Welcome to Android", fontSize = 12f)
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            DemoScreen(modifier = Modifier.padding(innerPadding))
+        }
     }
 }
 
@@ -70,7 +75,7 @@ fun DemoSlider(sliderPosition: Float, onPositionChange: (Float) -> Unit){
         modifier = Modifier.padding(10.dp),
         valueRange = 20f..38f,
         value = sliderPosition,
-        onValueChange = {onPositionChange}
+        onValueChange = onPositionChange
     )
 }
 
