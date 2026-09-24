@@ -31,6 +31,11 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun DemoText(message: String, fontSize: Float){
+    
+}
+
 //@Composable
 //fun Greeting(name: String, modifier: Modifier = Modifier) {
 //    Text(
